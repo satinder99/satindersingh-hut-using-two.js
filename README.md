@@ -1,1 +1,1 @@
-# satindersingh-hut-using-two.js
+# Draw-a-hut-using-two.js
