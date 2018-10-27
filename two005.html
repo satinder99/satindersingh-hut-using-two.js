@@ -1,0 +1,93 @@
+<!doctype html> 
+<html> 
+    <head> 
+        <meta charset="utf-8"> 
+        <script src="two.min.js"></script> 
+    </head> 
+    <body> 
+        <script>
+            var two = new Two({ fullscreen: true, autostart: true }).appendTo(document.body); 
+         
+              
+         
+            
+            
+            //triangle
+            var l1=two.makePath(50,350,250,150,450,350,false);
+            
+            l1.fill="#ccd1d1";
+            
+            
+            //roof
+              var l2=two.makePath(250,150,850,150,1050,350,450,350);
+            
+            l2.fill="#abb2b9";
+            
+            //walls
+            var w1=two.makeRectangle(250, 600, 400,500); 
+            var w2=two.makeRectangle(750,600,600,500); 
+            w1.fill="#909497";
+            w2.fill="#34495e";
+            
+            
+            //exhaoust
+            var exh1=two.makeRoundedRectangle(240,290,80,80,10);
+            var exh2=two.makeEllipse(240,450,60,40);
+            var exh3=two.makePolygon(900,300,20,10);
+            exh1.fill="skyblue";
+            exh2.fill="lightgreen";
+            exh3.fill="#d98880";
+            var exh=two.makeGroup(exh1,exh2);
+            exh.stroke = "black";
+            exh.linewidth=3;
+            exh1.opacity=0.7;
+            exh2.opacity=0.7;
+            exh3.opacity=0.7;
+                        
+            
+            
+            //door
+            var door=two.makeRoundedRectangle(250,700,150,300,5);
+            var lock=two.makeCircle(200,700,5);
+            door.fill="#e59866";
+            lock.fill="#6e2c00";
+            door.opacity=0.7;
+            
+            
+            //window
+            var win1=two.makeRoundedRectangle(600,600,100,100,30);
+            var win2=two.makeRoundedRectangle(900,600,100,100,30);
+            win2.fill=win1.fill="#d6eaf8";
+            
+            
+            //chimney
+            var c1=two.makeRectangle(850,130,40,100);
+            var c2=two.makeRoundedRectangle(850,75,80,10,5);
+            var c3=two.makeRectangle(850,90,10,20);
+            c2.fill=c1.fill="#b03a2e";
+            
+            
+            
+            //sun
+            var rect=two.makeStar(100,100,70,5,15);
+           var rect1=two.makePolygon(100,100,10,8);
+            rect1.fill="yellow";
+            rect1.opacity=0.8;
+       
+	   
+	   //
+	   var z1=two.makeGroup(rect,rect1,c1,c2,c3,win1,win2,door,lock,exh1,exh2,exh3,w1,w2,l1,l2);
+	   z1.scale=0.5;
+	   var z2= two.makeGroup(win1,win2,exh1,exh2,exh3,door,lock);
+	   z2.scale=0.5;
+                     
+           //two.update();
+         
+          two.bind('update', function() { rect.rotation += .01;
+                                          rect1.rotation+= .05;
+                                        exh1.rotation+=.02;
+                                         exh3.rotation+=.05;
+                                        });
+        </script> 
+    </body> 
+</html>
